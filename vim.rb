@@ -9,9 +9,11 @@ dep 'vim.src' do
   requires 'python-dev.managed'
 
   met? {
-    vim = `vim --version`
-    vim.include? '+ruby'
-    vim.include? '+python'
+    if which 'vim'
+      version = `vim --version`
+      version.include?('+ruby') &&
+      version.include?('+python')
+    end
   }
 
   source 'ftp://ftp.vim.org/pub/vim/unstable/unix/vim-7.4a.tar.bz2'
