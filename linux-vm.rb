@@ -1,5 +1,5 @@
 dep 'linux-vm' do
-  requires 'vim.src'
+  requires 'vim'
   requires 'zsh'
   requires 'tmux.src'
   requires 'dotfiles'
