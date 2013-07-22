@@ -12,3 +12,8 @@ dep 'python-dev.managed' do
   installs 'python-dev'
   provides []
 end
+
+dep 'cmake.managed' do
+  installs 'cmake'
+  provides 'cmake'
+end

@@ -1,6 +1,7 @@
 dep 'vim' do
   requires 'vim.src'
   requires 'command-t'
+  requires 'you-complete-me'
 end
 
 dep 'vim.src' do
@@ -32,6 +33,20 @@ dep 'command-t' do
       cd ~/.dotfiles/vim/bundle/command-t/ruby/command-t/
       ruby extconf.rb
       make
+    }
+  }
+end
+
+dep 'you-complete-me' do
+  requires 'dotfiles'
+  requires 'vim.src'
+  requires 'cmake.managed'
+
+  met? { '~/.dotfiles/vim/bundle/you-complete-me/python/ycm_core.so'.p.exists? }
+  meet {
+    system %Q{
+      cd ~/.dotfiles/vim/bundle/you-complete-me
+      ./install.sh
     }
   }
 end
