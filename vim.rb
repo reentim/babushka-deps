@@ -5,13 +5,21 @@ end
 
 dep 'vim.src' do
   requires 'libncurses5-dev.managed'
+  requires 'python-dev.managed'
 
-  source 'https://github.com/b4winckler/vim/archive/master.tar.gz'
+  met? {
+    vim = `vim --version`
+    vim.include? '+ruby'
+    vim.include? '+python'
+  }
+
+  source 'ftp://ftp.vim.org/pub/vim/unstable/unix/vim-7.4a.tar.bz2'
+  configure_args '--with-features=huge \
+                  --disable-gui \
+                  --enable-rubyinterp \
+                  --enable-pythoninterp \
+                  --with-python-config-dir=/usr/lib/python2.7/config'
   provides 'vim'
-
-#   configure do
-#     configure_args '--with-features=huge --disable-largefile --enable-perlinterp --enable-pythoninterp --enable-rubyinterp --with-ruby-command=/usr/bin/ruby'
-#   end
 end
 
 dep 'command-t' do

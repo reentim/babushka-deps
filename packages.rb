@@ -3,7 +3,12 @@ dep 'libncurses5-dev.managed' do
   provides []
 end
 
-dep "libevent-dev.managed" do
-  installs "libevent-dev"
+dep 'libevent-dev.managed' do
+  installs 'libevent-dev'
+  provides []
+end
+
+dep 'python-dev.managed' do
+  installs 'python-dev'
   provides []
 end
