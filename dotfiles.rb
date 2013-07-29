@@ -16,6 +16,8 @@ dep 'dotfiles configured' do
 
   met? { '~/.aliases'.p.exists? }
   met? { '~/.vim'.p.exists? }
+  met? { '~/.vim/bundle/command-t'.p.exists? }
+  met? { '~/.vim/bundle/you-complete-me'.p.exists? }
   met? { '~/.ssh/rc'.p.exists? }
   meet {
     system %Q{

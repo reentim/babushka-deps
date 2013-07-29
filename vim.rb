@@ -2,6 +2,7 @@ dep 'vim' do
   requires 'vim.src'
   requires 'command-t'
   requires 'you-complete-me'
+  requires 'stock ultisnips removed'
 end
 
 dep 'vim.src' do
@@ -51,4 +52,9 @@ dep 'you-complete-me' do
       ./install.sh
     }
   }
+end
+
+dep 'stock ultisnips removed' do
+  met? { !'~/.dotfiles/vim/bundle/ultisnips/UltiSnips/all.snippets'.p.exists? }
+  meet { `rm ~/.dotfiles/vim/bundle/ultisnips/UltiSnips/*` }
 end
