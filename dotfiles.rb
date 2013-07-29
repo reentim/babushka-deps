@@ -12,6 +12,7 @@ end
 
 dep 'dotfiles configured' do
   requires 'dotfiles installed'
+  requires 'italic terminal'
 
   met? { '~/.aliases'.p.exists? }
   met? { '~/.vim'.p.exists? }
@@ -25,4 +26,12 @@ dep 'dotfiles configured' do
       git submodule update
     }
   }
+end
+
+dep 'italic terminal' do
+  available_terminals = `toe`
+  met? {
+    available_terminals.include? 'xterm-256color-italic'
+  }
+  meet { `tic ~/.dotfiles/terminals/xterm-256color-italic.terminfo` }
 end
