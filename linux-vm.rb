@@ -3,4 +3,5 @@ dep 'linux-vm' do
   requires 'zsh'
   requires 'tmux.src'
   requires 'dotfiles'
+  requires 'scripts'
 end
