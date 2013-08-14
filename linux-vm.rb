@@ -5,5 +5,4 @@ dep 'linux-vm' do
   requires 'dotfiles'
   requires 'scripts'
   requires 'tools'
-  requires 'benhoskings:passwordless sudo'
 end
