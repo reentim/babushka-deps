@@ -1,5 +1,9 @@
 dep 'tools' do
+  requires 'vim'
+  requires 'zsh'
+  requires 'tmux.src'
   requires 'ack.src'
+  requires 'tree.managed'
 end
 
 dep 'ack.src' do
@@ -11,3 +15,5 @@ dep 'ack.src' do
     shell "curl http://beyondgrep.com/ack-2.04-single-file > /usr/local/bin/ack && chmod 0755 /usr/local/bin/ack", sudo: true
   }
 end
+
+dep 'tree.managed'
