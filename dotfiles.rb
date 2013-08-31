@@ -7,7 +7,7 @@ end
 
 dep 'dotfiles installed' do
   met? { File.exists?(PATH) }
-  meet { git 'git@github.com:reentim/.dotfiles.git', to: PATH }
+  meet { git 'git@github.com:reentim/.dotfiles.git', :to => PATH }
 end
 
 dep 'dotfiles configured', :options do

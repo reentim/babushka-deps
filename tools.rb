@@ -12,7 +12,7 @@ dep 'ack.src' do
     version > 2.0
   }
   meet {
-    shell "curl http://beyondgrep.com/ack-2.04-single-file > /usr/local/bin/ack && chmod 0755 /usr/local/bin/ack", sudo: true
+    shell "curl http://beyondgrep.com/ack-2.04-single-file > /usr/local/bin/ack && chmod 0755 /usr/local/bin/ack", :sudo => true
   }
 end
 
