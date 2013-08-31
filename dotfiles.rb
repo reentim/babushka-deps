@@ -1,8 +1,8 @@
 PATH = File.expand_path '~/.dotfiles'
 
-dep 'dotfiles' do
+dep 'dotfiles', :options do
   requires 'dotfiles installed'
-  requires 'dotfiles configured'
+  requires 'dotfiles configured'.with(options)
 end
 
 dep 'dotfiles installed' do
@@ -10,7 +10,7 @@ dep 'dotfiles installed' do
   meet { git 'git@github.com:reentim/.dotfiles.git', to: PATH }
 end
 
-dep 'dotfiles configured' do
+dep 'dotfiles configured', :options do
   requires 'dotfiles installed'
   requires 'italic terminal'
 
@@ -18,15 +18,22 @@ dep 'dotfiles configured' do
   met? { '~/.vim'.p.exists? }
   met? { '~/.vim/bundle/command-t'.p.exists? }
   met? { '~/.vim/bundle/you-complete-me'.p.exists? }
-  met? { '~/.ssh/rc'.p.exists? }
+  met? { false }
+
   meet {
     system %Q{
       cd #{PATH}
       rake install
-      rake ssh
       git submodule init
       git submodule update
     }
+
+    if options == 'ssh_socket'
+      system %Q{
+        cd #{PATH}
+        rake ssh
+      }
+    end
   }
 end
 
