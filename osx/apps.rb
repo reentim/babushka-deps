@@ -9,7 +9,8 @@ dep 'apps' do
     'Flux.app',
     'Spotify.app',
     'Transmission.app',
-    'Shiori.app'
+    'Shiori.app',
+    'Geekbench.app'
   ]
 end
 
@@ -81,4 +82,8 @@ end
 
 dep 'Shiori.app' do
   source 'http://aki-null.net/shiori/release/Shiori_1.0.1.zip'
+end
+
+dep 'Geekbench.app' do
+  source 'http://d34wv75roto0rl.cloudfront.net/Geekbench-3.0.2-Mac.zip'
 end
