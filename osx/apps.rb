@@ -10,7 +10,9 @@ dep 'apps' do
     'Spotify.app',
     'Transmission.app',
     'Shiori.app',
-    'Geekbench.app'
+    'Geekbench.app',
+    'ImageAlpha.app',
+    'ImageOptim.app'
   ]
 end
 
@@ -86,4 +88,12 @@ end
 
 dep 'Geekbench.app' do
   source 'http://d34wv75roto0rl.cloudfront.net/Geekbench-3.0.2-Mac.zip'
+end
+
+dep 'ImageAlpha.app' do
+  source 'http://pngmini.com/ImageAlpha1.3.5.tar.bz2'
+end
+
+dep 'ImageOptim.app' do
+  source 'http://imageoptim.com/ImageOptim.tbz2'
 end
