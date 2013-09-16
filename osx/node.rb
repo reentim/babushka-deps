@@ -1,7 +1,8 @@
 dep 'node' do
     requires [
       'node.managed',
-      'npm'
+      'npm',
+      'bower.npm'
     ]
 end
 
@@ -16,3 +17,4 @@ dep 'npm' do
   }
 end
 
+dep 'bower.npm'
