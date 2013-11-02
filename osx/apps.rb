@@ -12,7 +12,9 @@ dep 'apps' do
     'Shiori.app',
     'Geekbench.app',
     'ImageAlpha.app',
-    'ImageOptim.app'
+    'ImageOptim.app',
+    'VLC.app',
+    'Airfoil.app'
   ]
 end
 
@@ -23,6 +25,7 @@ dep 'dev apps' do
     'GitHub.app',
     'Google Chrome Canary.app',
     'Firefox.app',
+    'Sequel Pro.app'
   ]
 end
 
@@ -75,7 +78,7 @@ dep 'Spotify.app' do
 end
 
 dep 'Firefox.app' do
-  source 'http://ftp.mozilla.org/pub/mozilla.org/firefox/nightly/latest-trunk/firefox-26.0a1.en-US.mac.dmg'
+  source 'http://download.cdn.mozilla.net/pub/mozilla.org/firefox/releases/24.0/mac/en-US/Firefox%2024.0.dmg'
 end
 
 dep 'Transmission.app' do
@@ -96,4 +99,16 @@ end
 
 dep 'ImageOptim.app' do
   source 'http://imageoptim.com/ImageOptim.tbz2'
+end
+
+dep 'VLC.app' do
+  source 'http://get.videolan.org/vlc/2.0.8/macosx/vlc-2.0.8-intel64.dmg'
+end
+
+dep 'Airfoil.app' do
+  source 'http://neutral.rogueamoeba.com/mirror/files/Airfoil.zip'
+end
+
+dep 'Sequel Pro.app' do
+  source 'https://sequel-pro.googlecode.com/files/sequel-pro-1.0.2.dmg'
 end
