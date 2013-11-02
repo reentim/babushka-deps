@@ -1,5 +1,5 @@
 dep 'preferences' do
-  requires 'longer standby delay'
+  requires 'longer-standby-delay'
 
   def defaults_write(domain, key, type, value)
     shell "defaults write #{domain} #{key} -#{type} #{value}"
@@ -17,7 +17,7 @@ dep 'preferences' do
   defaults_write 'com.apple.dock', 'autohide', 'bool', true
 end
 
-dep 'longer standby delay' do
+dep 'longer-standby-delay' do
   def standby_delay
     shell("pmset -g | grep standbydelay | awk '{print $2}'").to_i
   end

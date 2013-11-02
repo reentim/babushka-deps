@@ -13,13 +13,13 @@ dep 'osx' do
 
   requires 'apps'
   requires 'preferences'
-  requires 'other data backed up'
+  requires 'dropbox-backups'
 end
 
-dep 'other data backed up' do
-  requires 'Messages.backed_up'
+dep 'dropbox-backups' do
+  requires 'Messages.dropbox_backup'
 end
 
-dep 'Messages.backed_up' do
-  source "#{LIBRARY}/Messages/Archive"
+dep 'Messages.dropbox_backup' do
+  source "#{LIBRARY}/Containers/com.apple.iChat/Data/Library/Messages/Archive"
 end

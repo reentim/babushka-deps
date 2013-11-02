@@ -4,8 +4,7 @@ dep 'ruby' do
     'ruby-build.managed',
     '2.0.0-p247.rbenv',
     'global ruby'.with('2.0.0-p247'),
-    'bundler.gem',
-    'vagrant.gem'
+    'bundler.gem'
   ]
 end
 
@@ -22,7 +21,6 @@ dep 'global ruby', :version do
 end
 
 dep '2.0.0-p247.rbenv'
-dep 'vagrant.gem'
 dep 'rbenv.managed'
 dep 'ruby-build.managed'
 

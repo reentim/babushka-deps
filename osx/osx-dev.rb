@@ -6,7 +6,7 @@ dep 'osx-dev' do
   requires 'libraries'
   requires 'ruby'
   requires 'node'
-  requires 'dotfiles'
+  requires 'dotfiles'.with(nil)
   requires 'scripts'
   requires 'tools'
   requires 'zsh'

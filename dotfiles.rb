@@ -18,7 +18,6 @@ dep 'dotfiles configured', :options do
   met? { '~/.vim'.p.exists? }
   met? { '~/.vim/bundle/command-t'.p.exists? }
   met? { '~/.vim/bundle/you-complete-me'.p.exists? }
-  met? { false }
 
   meet {
     system %Q{

@@ -1,4 +1,4 @@
-meta :backed_up do
+meta :dropbox_backup do
   accepts_list_for :source
 
   def dropbox_shadow(file)
@@ -34,10 +34,10 @@ meta :backed_up do
     unlinked.each do |pair|
       pair.each do |s, t|
         if t.p.exists?
-          unmeetable! "Link target alreday exists. Consider deleting it."
+          unmeetable! "Link alreday exists. Consider deleting it."
         else
           # TODO escape spaces in path
-          log_shell "Linking #{s} to #{t}", "ln -s #{s} #{t}"
+          log_shell "Linking #{t} to #{s}", "ln -s #{s} #{t}"
         end
       end
     end
