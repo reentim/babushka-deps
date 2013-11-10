@@ -2,6 +2,7 @@ dep 'ruby' do
   requires [
     'rbenv.managed',
     'ruby-build.managed',
+    'rbenv-readline.managed',
     '2.0.0-p247.rbenv',
     'global ruby'.with('2.0.0-p247'),
     'bundler.gem'
@@ -20,9 +21,12 @@ dep 'global ruby', :version do
   }
 end
 
-dep '2.0.0-p247.rbenv'
 dep 'rbenv.managed'
 dep 'ruby-build.managed'
+dep 'rbenv-readline.managed' do
+  provides []
+end
+dep '2.0.0-p247.rbenv'
 
 dep 'bundler.gem' do
   provides 'bundle'

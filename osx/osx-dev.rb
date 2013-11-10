@@ -3,7 +3,6 @@ dep 'osx-dev' do
   requires 'dev apps'
   requires 'xcode tools'
   requires 'homebrew'
-  requires 'libraries'
   requires 'ruby'
   requires 'node'
   requires 'dotfiles'.with(nil)
@@ -17,12 +16,4 @@ dep 'scripts' do
   meet {
     git 'git@github.com:reentim/scripts.git', :to => '~/bin'
   }
-end
-
-dep 'libraries' do
-  requires 'readline.managed'
-end
-
-dep 'readline.managed' do
-  provides []
 end
