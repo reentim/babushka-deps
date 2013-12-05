@@ -5,7 +5,9 @@ dep 'ruby' do
     'rbenv-readline.managed',
     '2.0.0-p247.rbenv',
     'global ruby'.with('2.0.0-p247'),
-    'bundler.gem'
+    'bundler.gem',
+    'wirble.gem',
+    'github-auth.gem'
   ]
 end
 
@@ -30,4 +32,12 @@ dep '2.0.0-p247.rbenv'
 
 dep 'bundler.gem' do
   provides 'bundle'
+end
+
+dep 'github-auth.gem' do
+  provides 'gh-auth'
+end
+
+dep 'wirble.gem' do
+  provides []
 end
