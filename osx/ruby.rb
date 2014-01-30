@@ -3,8 +3,8 @@ dep 'ruby' do
     'rbenv.managed',
     'ruby-build.managed',
     'rbenv-readline.managed',
-    '2.0.0-p247.rbenv',
-    'global ruby'.with('2.0.0-p247'),
+    '2.1.0.rbenv',
+    'global ruby'.with('2.1.0'),
     'bundler.gem',
     'wirble.gem',
     'github-auth.gem'
@@ -28,7 +28,8 @@ dep 'ruby-build.managed'
 dep 'rbenv-readline.managed' do
   provides []
 end
-dep '2.0.0-p247.rbenv'
+
+dep '2.1.0.rbenv'
 
 dep 'bundler.gem' do
   provides 'bundle'

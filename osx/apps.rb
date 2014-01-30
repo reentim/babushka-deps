@@ -1,32 +1,33 @@
 dep 'apps' do
-  requires [
-    'Dropbox.app',
-    'Google Chrome.app',
-    'Moom.app',
-    'iPhoto.appstore',
-    'Alfred.app',
-    'Arq.app',
-    'Flux.app',
-    'Spotify.app',
-    'Transmission.app',
-    'Shiori.app',
-    'Geekbench.app',
-    'ImageAlpha.app',
-    'ImageOptim.app',
-    'VLC.app',
-    'Airfoil.app'
+  requires %w[
+    Dropbox.app
+    Moom.app
+    iPhoto.appstore
+    Alfred.app
+    Arq.app
+    Flux.app
+    Spotify.app
+    Transmission.app
+    Shiori.app
+    Geekbench.app
+    ImageAlpha.app
+    ImageOptim.app
+    VLC.app
+    Airfoil.app
   ]
+
+  requires 'Google Chrome.app'
 end
 
-dep 'dev apps' do
-  requires [
-    'VirtualBox.installer',
-    'iTerm.app',
-    'GitHub.app',
-    'Google Chrome Canary.app',
-    'Firefox.app',
-    'Sequel Pro.app'
+dep 'dev-apps' do
+  requires %w[
+    VirtualBox.installer
+    iTerm.app
+    GitHub.app
+    Firefox.app
   ]
+  requires "Google Chrome Canary.app"
+  requires "Sequel Pro.app"
 end
 
 dep 'Dropbox.app' do
@@ -38,7 +39,7 @@ dep 'Moom.app' do
 end
 
 dep 'iTerm.app' do
-  source 'http://www.iterm2.com/nightly/latest'
+  source 'http://www.iterm2.com/downloads/beta/iTerm2-1_0_0_20131218.zip'
 end
 
 dep 'VirtualBox.installer' do

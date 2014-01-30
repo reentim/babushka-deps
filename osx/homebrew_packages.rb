@@ -9,6 +9,7 @@ dep 'homebrew-packages' do
     coreutils.managed
     z.managed
     ack.managed
+    heroku-toolbelt.managed
   ]
   requires 'command-t'.with('/usr/bin/')
 end
@@ -32,19 +33,11 @@ dep 'babushka-git-removed' do
   }
 end
 
-dep 'bash-completion.managed' do
-  provides []
-end
-
-dep 'tmux.managed'
 dep 'tree.managed'
 dep 'ack.managed'
 dep 'ssh-copy-id.managed'
-
-dep 'coreutils.managed' do
-  provides 'gls'
-end
-
-dep 'macvim.managed' do
-  provides 'mvim'
-end
+dep 'tmux.managed'
+dep 'bash-completion.managed' do provides [] end
+dep 'coreutils.managed'       do provides 'gls' end
+dep 'macvim.managed'          do provides 'mvim' end
+dep 'heroku-toolbelt.managed' do provides 'heroku' end

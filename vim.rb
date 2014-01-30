@@ -26,17 +26,16 @@ dep 'vim.src' do
   provides 'vim'
 end
 
-dep 'command-t' do
-  requires 'dotfiles'
-  requires 'vim.src'
-
+dep 'command-t', :ruby_path do
+  ruby_path.default("")
   met? { '~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.o'.p.exists? }
   meet {
-    system %Q{
-      cd ~/.dotfiles/vim/bundle/command-t/ruby/command-t/
-      ruby extconf.rb
-      make
-    }
+    log_block "Making command-t with #{ruby_path}ruby" do
+      cd "#{ENV['HOME']}/.dotfiles/vim/bundle/command-t/ruby/command-t" do
+        shell "#{ruby_path if ruby_path.set?}ruby extconf.rb"
+        shell "#{ruby_path if ruby_path.set?}rake make"
+      end
+    end
   }
 end
 
