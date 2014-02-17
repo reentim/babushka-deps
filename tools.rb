@@ -4,6 +4,7 @@ dep 'tools' do
   requires 'tmux.src'
   requires 'ack.src'
   requires 'tree.managed'
+  requires 'zeus.gem'
 end
 
 dep 'ack.src' do
@@ -17,3 +18,4 @@ dep 'ack.src' do
 end
 
 dep 'tree.managed'
+dep 'zeus.gem'
