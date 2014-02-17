@@ -10,6 +10,7 @@ dep 'homebrew-packages' do
     z.managed
     ack.managed
     heroku-toolbelt.managed
+    the_silver_searcher.managed
   ]
   requires 'command-t'.with('/usr/bin/')
 end
@@ -37,7 +38,8 @@ dep 'tree.managed'
 dep 'ack.managed'
 dep 'ssh-copy-id.managed'
 dep 'tmux.managed'
-dep 'bash-completion.managed' do provides [] end
-dep 'coreutils.managed'       do provides 'gls' end
-dep 'macvim.managed'          do provides 'mvim' end
-dep 'heroku-toolbelt.managed' do provides 'heroku' end
+dep 'the_silver_searcher.managed' do provides 'ag' end
+dep 'bash-completion.managed'     do provides [] end
+dep 'coreutils.managed'           do provides 'gls' end
+dep 'macvim.managed'              do provides 'mvim' end
+dep 'heroku-toolbelt.managed'     do provides 'heroku' end

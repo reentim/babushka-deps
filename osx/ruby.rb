@@ -7,7 +7,8 @@ dep 'ruby' do
     'global ruby'.with('2.1.0'),
     'bundler.gem',
     'wirble.gem',
-    'github-auth.gem'
+    'github-auth.gem',
+    'zeus.gem'
   ]
 end
 
@@ -42,3 +43,5 @@ end
 dep 'wirble.gem' do
   provides []
 end
+
+dep 'zeus.gem'
