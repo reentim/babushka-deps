@@ -5,6 +5,7 @@ dep 'tools' do
   requires 'ack.src'
   requires 'tree.managed'
   requires 'zeus.gem'
+  requires 'ag'
 end
 
 dep 'ack.src' do
@@ -17,5 +18,32 @@ dep 'ack.src' do
   }
 end
 
+dep 'ag' do
+  requires %W{
+    libpcre3-dev.managed
+    zlib1g-dev.managed
+    liblzma-dev
+  }
+  met? {
+    which "ag"
+  }
+  meet {
+    uri = 'https://github.com/ggreer/the_silver_searcher/archive/master.tar.gz'
+    Babushka::Resource.extract(uri)
+    cd "~/.babushka/build/master/the_silver_searcher-master" do
+      shell "./build.sh"
+      shell "make install", :sudo => true
+    end
+  }
+end
+
 dep 'tree.managed'
 dep 'zeus.gem'
+dep 'libpcre3-dev.managed' do provides [] end
+dep 'zlib1g-dev.managed'   do provides [] end
+dep 'liblzma-dev' do
+  met? { shell? "dpkg -s liblzma-dev" }
+  meet {
+    shell "apt-get install -y --force-yes liblzma-dev", :sudo => true
+  }
+end
