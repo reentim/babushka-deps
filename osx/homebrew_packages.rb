@@ -11,6 +11,7 @@ dep 'homebrew-packages' do
     ack.managed
     heroku-toolbelt.managed
     the_silver_searcher.managed
+    rbenv-ctags.managed
   ]
   requires 'command-t'.with('/usr/bin/')
 end
@@ -43,3 +44,4 @@ dep 'bash-completion.managed'     do provides [] end
 dep 'coreutils.managed'           do provides 'gls' end
 dep 'macvim.managed'              do provides 'mvim' end
 dep 'heroku-toolbelt.managed'     do provides 'heroku' end
+dep 'rbenv-ctags.managed'         do provides [] end
