@@ -8,7 +8,8 @@ dep 'ruby' do
     'bundler.gem',
     'wirble.gem',
     'github-auth.gem',
-    'zeus.gem'
+    'zeus.gem',
+    'gem-ctags.gem',
   ]
 end
 
@@ -45,3 +46,4 @@ dep 'wirble.gem' do
 end
 
 dep 'zeus.gem'
+dep 'gem-ctags.gem' do provides [] end
