@@ -1,12 +1,12 @@
 dep 'zsh', :username do
   username.default!(shell('whoami'))
   requires 'zsh.shell_setup'
-  met? { shell("sudo su - '#{username}' -c 'echo $SHELL'") == which('zsh') }
+  met? { shell("echo $SHELL") == which('zsh') }
   meet { sudo("chsh -s '#{which('zsh')}' #{username}") }
 end
 
 dep 'zsh.shell_setup' do
-  requires 'zsh.bin'
+  requires 'zsh.managed'
 end
 
-dep 'zsh.bin'
+dep 'zsh.managed'

@@ -1,11 +1,21 @@
-dep 'tools' do
+dep 'dev-tools' do
+  requires {
+    on :linux, %w[
+      ack.src
+      ag-src
+      tmux.src
+    ]
+
+    on :osx, %w[
+      homebrew
+      homebrew-packages
+    ]
+  }
+
+  requires 'gems'
+  requires 'tree.managed'
   requires 'vim'
   requires 'zsh'
-  requires 'tmux.src'
-  requires 'ack.src'
-  requires 'tree.managed'
-  requires 'zeus.gem'
-  requires 'ag'
 end
 
 dep 'ack.src' do
@@ -18,15 +28,13 @@ dep 'ack.src' do
   }
 end
 
-dep 'ag' do
-  requires %W{
+dep 'ag-src' do
+  requires %w[
     libpcre3-dev.managed
     zlib1g-dev.managed
     liblzma-dev
-  }
-  met? {
-    which "ag"
-  }
+  ]
+  met? { which "ag" }
   meet {
     uri = 'https://github.com/ggreer/the_silver_searcher/archive/master.tar.gz'
     Babushka::Resource.extract(uri)
@@ -37,13 +45,11 @@ dep 'ag' do
   }
 end
 
-dep 'tree.managed'
-dep 'zeus.gem'
 dep 'libpcre3-dev.managed' do provides [] end
 dep 'zlib1g-dev.managed'   do provides [] end
 dep 'liblzma-dev' do
   met? { shell? "dpkg -s liblzma-dev" }
-  meet {
-    shell "apt-get install -y --force-yes liblzma-dev", :sudo => true
-  }
+  meet { shell "apt-get install -y --force-yes liblzma-dev", :sudo => true }
 end
+
+dep 'tree.managed'

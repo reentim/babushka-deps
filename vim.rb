@@ -1,8 +1,12 @@
 dep 'vim' do
-  requires 'vim.src'
+  requires {
+    on :linux, 'vim.src'
+    on :osx, 'macvim.managed'
+  }
+
   requires 'command-t'
   requires 'you-complete-me'
-  requires 'stock ultisnips removed'
+  requires 'stock-ultisnips-removed'
 end
 
 dep 'vim.src' do
@@ -26,8 +30,15 @@ dep 'vim.src' do
   provides 'vim'
 end
 
+dep 'python-dev.managed' do
+  installs 'python-dev'
+  provides []
+end
+
 dep 'command-t', :ruby_path do
-  ruby_path.default("")
+  on :osx do
+    ruby_path.default "/usr/bin"
+  end
   met? { '~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.o'.p.exists? }
   meet {
     log_block "Making command-t with #{ruby_path}ruby" do
@@ -41,19 +52,22 @@ end
 
 dep 'you-complete-me' do
   requires 'dotfiles'
-  requires 'vim.src'
   requires 'cmake.managed'
 
   met? { '~/.dotfiles/vim/bundle/you-complete-me/python/ycm_core.so'.p.exists? }
   meet {
-    system %Q{
-      cd ~/.dotfiles/vim/bundle/you-complete-me
-      ./install.sh
-    }
+    cd "~/.dotfiles/vim/bundle/you-complete-me" do
+      shell "./install.sh"
+    end
   }
 end
 
-dep 'stock ultisnips removed' do
+dep 'cmake.managed' do
+  installs 'cmake'
+  provides 'cmake'
+end
+
+dep 'stock-ultisnips-removed' do
   met? { !'~/.dotfiles/vim/bundle/ultisnips/UltiSnips/all.snippets'.p.exists? }
   meet { `rm ~/.dotfiles/vim/bundle/ultisnips/UltiSnips/*` }
 end

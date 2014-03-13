@@ -2,7 +2,7 @@ meta :dropbox_backup do
   accepts_list_for :source
 
   def dropbox_shadow(file)
-    file.sub /(#{USER})\//, '\1/Dropbox/.Backup/'
+    file.sub /(#{ENV['USER']})\//, '\1/Dropbox/.Backup/'
   end
 
   def link_map

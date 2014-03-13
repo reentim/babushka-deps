@@ -1,8 +1,19 @@
-dep 'migrate files', :source, :dest do
+dep 'migration-prompt' do
+  unless '~/Files'.p.exists?
+    confirm(
+      'Are there files to be migrated from an external source?',
+      :default => 'n'
+    ) do
+      requires 'migrate-files'
+    end
+  end
+end
+
+dep 'migrate-files', :source, :dest do
   source.ask("Enter source").
-    default("/Volumes/SuperDuper/Users/#{USER}")
+    default("/Volumes/SuperDuper/Users/#{ENV['USER']}")
   dest.ask("Enter destination").
-    default("/Users/#{USER}")
+    default("/Users/#{ENV['USER']}")
 
   dirs = source.p.children.select do |dir|
     dir = dir.relative_path_from(source.p)
