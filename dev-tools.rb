@@ -21,10 +21,10 @@ end
 dep 'ack.src' do
   met? {
     version = `ack --version 2> /dev/null`.split[1].to_f
-    version > 2.0
+    version > 2.1
   }
   meet {
-    shell "curl http://beyondgrep.com/ack-2.04-single-file > /usr/local/bin/ack && chmod 0755 /usr/local/bin/ack", :sudo => true
+    shell "curl http://beyondgrep.com/ack-2.12-single-file > /usr/local/bin/ack && chmod 0755 /usr/local/bin/ack", :sudo => true
   }
 end
 
