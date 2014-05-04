@@ -21,8 +21,8 @@ dep 'longer-standby-delay' do
   def standby_delay
     shell("pmset -g | grep standbydelay | awk '{print $2}'").to_i
   end
-  met? { standby_delay == 43200 }
+  met? { standby_delay == 86400 }
   meet {
-    log_shell "Increasing standby delay to 12 hours", "pmset -a standbydelay 43200", :sudo => true
+    log_shell "Increasing standby delay to 12 hours", "pmset -a standbydelay 86400", :sudo => true
   }
 end
