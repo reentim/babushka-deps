@@ -20,6 +20,7 @@ dep 'node-packages' do
     underscore.npm
     bower.npm
     grunt-cli.npm
+    yo.npm
   ]
 end
 
@@ -27,3 +28,4 @@ dep 'coffee-script.npm' do provides 'coffee' end
 dep 'underscore.npm'
 dep 'bower.npm'
 dep 'grunt-cli.npm'
+dep 'yo.npm'
