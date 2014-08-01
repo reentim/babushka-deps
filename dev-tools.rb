@@ -4,18 +4,19 @@ dep 'dev-tools' do
       ack.src
       ag-src
       tmux.src
+      zsh.src
     ]
 
     on :osx, %w[
       homebrew
       homebrew-packages
+      zsh.managed
     ]
   }
 
   requires 'gems'
   requires 'tree.managed'
   requires 'vim'
-  requires 'zsh'
 end
 
 dep 'ack.src' do

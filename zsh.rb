@@ -10,3 +10,7 @@ dep 'zsh.shell_setup' do
 end
 
 dep 'zsh.managed'
+
+dep 'zsh.src' do
+  source 'http://sourceforge.net/projects/zsh/files/latest/download'
+end
