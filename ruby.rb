@@ -3,8 +3,8 @@ dep 'ruby' do
     'rbenv.managed',
     'ruby-build.managed',
     'rbenv-readline.managed',
-    '2.1.0.rbenv',
-    'global ruby'.with('2.1.0'),
+    '2.1.2.rbenv',
+    'global ruby'.with('2.1.2'),
   ]
 end
 
@@ -20,4 +20,4 @@ dep 'global ruby', :version do
   }
 end
 
-dep '2.1.0.rbenv'
+dep '2.1.2.rbenv'
