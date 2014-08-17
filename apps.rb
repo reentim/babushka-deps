@@ -112,5 +112,6 @@ end
 dep 'iPhoto.appstore'
 
 dep 'iTerm.app' do
-  source 'http://www.iterm2.com/downloads/beta/iTerm2-1_0_0_20131218.zip'
+  source 'https://iterm2.com/downloads/stable/iTerm2_v2_0.zip'
+  provides 'iTerm.app >= 2.0'
 end
