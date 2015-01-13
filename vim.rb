@@ -36,9 +36,8 @@ dep 'python-dev.managed' do
 end
 
 dep 'command-t', :ruby_path do
-  on :osx do
-    ruby_path.default "/usr/bin"
-  end
+  ruby_path.default "/usr/bin"
+
   met? { '~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.o'.p.exists? }
   meet {
     log_block "Making command-t with #{ruby_path}ruby" do
