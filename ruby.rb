@@ -1,10 +1,12 @@
+NEW_RUBY_VERSION = "2.2.2"
+
 dep 'ruby' do
   requires [
     'rbenv.managed',
     'ruby-build.managed',
     'rbenv-readline.managed',
-    '2.1.2.rbenv',
-    'global ruby'.with('2.1.2'),
+    "#{NEW_RUBY_VERSION}.rbenv",
+    'global ruby'.with(NEW_RUBY_VERSION),
   ]
 end
 
@@ -20,4 +22,4 @@ dep 'global ruby', :version do
   }
 end
 
-dep '2.1.2.rbenv'
+dep "#{NEW_RUBY_VERSION}.rbenv"
