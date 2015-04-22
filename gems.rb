@@ -18,3 +18,4 @@ dep 'bundler.gem'     do provides 'bundle' end
 dep 'gem-ctags.gem'   do provides [] end
 dep 'github-auth.gem' do provides 'gh-auth' end
 dep 'wirble.gem'      do provides [] end
+dep 'rails.gem'       do provides [] end
