@@ -20,10 +20,10 @@ dep 'osx-dev' do
   requires 'xcode tools'
 end
 
-dep 'brand-new-2015' do
+dep 'MacBookPro-2016' do
   requires 'ruby'
-  requires 'bundler.gem'
-  requires 'rails.gem'
-
-  requires 'Shiori.app'
+  requires 'gems'
+  requires 'current-projects'
+  requires 'homebrew-packages'
+  requires 'dotfiles'
 end

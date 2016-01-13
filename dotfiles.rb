@@ -14,7 +14,7 @@ dep 'dotfiles-configured', :install_ssh_socket_hack do
   install_ssh_socket_hack.default! false
 
   requires 'dotfiles-installed'
-  requires 'italic-terminal'
+  # requires 'italic-terminal'
 
   met? { '~/.aliases'.p.exists? }
   met? { '~/.vim'.p.exists? }
