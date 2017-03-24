@@ -1,7 +1,10 @@
 dep 'vim' do
   requires {
     on :linux, 'vim.src'
-    on :osx, 'macvim.managed'
+    on :osx, [
+      'macvim.managed',
+      'vim.managed'
+    ]
   }
 
   requires 'command-t'
@@ -43,7 +46,7 @@ dep 'command-t', :ruby_path do
     log_block "Making command-t with #{ruby_path}ruby" do
       cd "#{ENV['HOME']}/.dotfiles/vim/bundle/command-t/ruby/command-t" do
         shell "#{ruby_path if ruby_path.set?}ruby extconf.rb"
-        shell "#{ruby_path if ruby_path.set?}rake make"
+        shell "make"
       end
     end
   }

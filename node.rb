@@ -1,17 +1,9 @@
 dep 'node' do
     requires [
-      'node-brew',
+      'node.managed',
       'npm',
       'node-packages',
     ]
-end
-
-# NPM is broken under Homebrew: https://github.com/Homebrew/homebrew/issues/22408
-dep 'node-brew' do
-  met? { which 'node' }
-  meet {
-    log_shell 'Installing node without npm', 'brew install node --without-npm'
-  }
 end
 
 dep 'node-packages' do
@@ -24,8 +16,9 @@ dep 'node-packages' do
   ]
 end
 
-dep 'coffee-script.npm' do provides 'coffee' end
-dep 'underscore.npm'
 dep 'bower.npm'
+dep 'coffee-script.npm' do provides 'coffee' end
 dep 'grunt-cli.npm'
+dep 'node.managed'
+dep 'underscore.npm'
 dep 'yo.npm'

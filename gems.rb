@@ -9,10 +9,10 @@ dep 'gems' do
   # requires 'wirble.gem'
   # requires 'zeus.gem'
   requires 'foreman.gem'
+  requires 'wirble.gem'
 end
 
 dep 'pry.gem'
-dep 'zeus.gem'
 dep 'hub.gem'
 dep 'foreman.gem'
 

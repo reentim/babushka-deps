@@ -1,4 +1,4 @@
-NEW_RUBY_VERSION = "2.3.0"
+NEW_RUBY_VERSION = "2.4.0"
 
 dep 'ruby' do
   requires [

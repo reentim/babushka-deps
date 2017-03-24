@@ -11,14 +11,18 @@ dep 'dev-tools' do
       homebrew
       homebrew-packages
       zsh.managed
+      vagrant.installer
     ]
   }
 
   requires 'gems'
   requires 'tree.managed'
-  requires 'vim'
 end
 
 dep 'tree.managed'
 dep 'silversearcher-ag.managed' do provides 'ag'  end
 dep 'ack-grep.managed'          do provides 'ack' end
+
+dep 'vagrant.installer' do
+  source 'https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1.dmg'
+end

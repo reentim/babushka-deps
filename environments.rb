@@ -27,3 +27,22 @@ dep 'MacBookPro-2016' do
   requires 'homebrew-packages'
   requires 'dotfiles'
 end
+
+dep 'iMac' do
+  requires 'iTerm.app'
+  requires 'Alfred.app'
+  requires 'Google Chrome.app'
+  requires 'ImageOptim.app'
+  requires 'ImageAlpha.app'
+  requires 'VLC.app'
+  requires 'Flux.app'
+  requires 'Last.fm.app'
+  requires 'homebrew'
+  requires 'dev-tools'
+  requires 'zsh'
+  requires 'ruby'
+  requires 'node'
+  requires 'command-t'
+  requires 'dotfiles'
+  requires 'zsh.managed'
+end

@@ -19,14 +19,12 @@ dep 'dotfiles-configured', :install_ssh_socket_hack do
   met? { '~/.aliases'.p.exists? }
   met? { '~/.vim'.p.exists? }
   met? { '~/.vim/bundle/command-t'.p.exists? }
-  met? { '~/.vim/bundle/you-complete-me'.p.exists? }
 
   meet {
     system %Q{
       cd #{PATH}
       rake install
-      git submodule init
-      git submodule update
+      git submodule update --init --recursive
     }
 
     if install_ssh_socket_hack.set?
@@ -37,12 +35,4 @@ dep 'dotfiles-configured', :install_ssh_socket_hack do
     end
 
   }
-end
-
-dep 'italic-terminal' do
-  available_terminals = %x[toe]
-  met? {
-    available_terminals.include? 'xterm-256color-italic'
-  }
-  meet { shell "tic ~/.dotfiles/terminals/xterm-256color-italic.terminfo" }
 end

@@ -37,7 +37,7 @@ dep 'Airfoil.app' do
 end
 
 dep 'Alfred.app' do
-  source 'http://cachefly.alfredapp.com/Alfred_2.0.7_205.zip'
+  source 'https://cachefly.alfredapp.com/Alfred_2.7.2_407.zip'
 end
 
 dep 'Arq.app' do
@@ -73,11 +73,11 @@ dep 'Google Chrome.app' do
 end
 
 dep 'ImageAlpha.app' do
-  source 'http://pngmini.com/ImageAlpha1.3.5.tar.bz2'
+  source 'http://pngmini.com/ImageAlpha1.4.0.tar.bz2'
 end
 
 dep 'ImageOptim.app' do
-  source 'http://imageoptim.com/ImageOptim.tbz2'
+  source 'https://imageoptim.com/ImageOptim.tbz2'
 end
 
 dep 'Moom.app' do
@@ -101,7 +101,7 @@ dep 'Transmission.app' do
 end
 
 dep 'VLC.app' do
-  source 'http://get.videolan.org/vlc/2.0.8/macosx/vlc-2.0.8-intel64.dmg'
+  source 'http://get.videolan.org/vlc/2.2.1/macosx/vlc-2.2.1.dmg'
 end
 
 dep 'VirtualBox.installer' do
@@ -112,6 +112,10 @@ end
 dep 'iPhoto.appstore'
 
 dep 'iTerm.app' do
-  source 'https://iterm2.com/downloads/stable/iTerm2_v2_0.zip'
+  source 'https://iterm2.com/downloads/stable/iTerm2-2_1_1.zip'
   provides 'iTerm.app >= 2.0'
+end
+
+dep 'Last.fm.app' do
+  source 'http://cdn.last.fm/client/Mac/Last.fm-2.1.36.zip'
 end
