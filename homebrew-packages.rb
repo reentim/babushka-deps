@@ -3,6 +3,7 @@ dep 'homebrew-packages' do
     ack.managed
     bash-completion.managed
     cmake.managed
+    colordiff.managed
     coreutils.managed
     elasticsearch.managed
     git.managed
@@ -24,6 +25,7 @@ dep 'homebrew-packages' do
     tree.managed
     vim.managed
     watch.managed
+    watchman.managed
     yarn.managed
     z.managed
   ]
@@ -48,23 +50,14 @@ dep 'babushka-git-removed' do
   }
 end
 
-dep 'rbenv.managed' do
-  requires 'rbenv-setup'
-end
-
-dep 'rbenv-setup' do
-  met? { File.read("#{ENV['HOME']}/.bash_profile").lines.grep(/rbenv/).any? }
-  meet {
-    log_shell "Adding rbenv stuff to ~/.bash_profile", %Q[echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile && echo 'eval "$(rbenv init -)"' >> ~/.bash_profile]
-  }
-end
-
 dep 'ack.managed'
+dep 'colordiff.managed'
 dep 'elasticsearch.managed'
 dep 'go.managed'
 dep 'hub.managed'
 dep 'irssi.managed'
 dep 'jrnl.managed'
+dep 'node.managed'
 dep 'openssl.managed'
 dep 'rbenv.managed'
 dep 'ruby-build.managed'
@@ -76,6 +69,10 @@ dep 'watch.managed'
 
 dep 'coreutils.managed'           do provides 'gls' end
 dep 'heroku.managed'              do provides 'heroku' end
+dep 'watchman.managed'
+dep 'yarn.managed'
+
+dep 'coreutils.managed'           do provides 'gls' end
 dep 'macvim.managed'              do provides 'mvim' end
 dep 'p7zip.managed'               do provides '7z' end
 dep 'postgresql.managed'          do provides 'postgres' end
@@ -89,5 +86,4 @@ dep 'chruby.managed'              do provides [] end
 dep 'imagemagick.managed'         do provides [] end
 dep 'phantomjs.managed'           do provides [] end
 dep 'rbenv-ctags.managed'         do provides [] end
-dep 'rbenv-readline.managed'      do provides [] end
 dep 'z.managed'                   do provides [] end

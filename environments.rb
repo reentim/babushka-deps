@@ -23,9 +23,9 @@ end
 dep 'MacBookPro-2016' do
   requires 'ruby'
   requires 'gems'
-  requires 'current-projects'
   requires 'homebrew-packages'
   requires 'dotfiles'
+  requires 'zsh'
 end
 
 dep 'iMac' do

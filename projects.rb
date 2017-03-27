@@ -1,6 +1,5 @@
 dep 'current-projects' do
   requires %w[
-    project_nett
   ]
 end
 

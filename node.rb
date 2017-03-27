@@ -6,6 +6,14 @@ dep 'node' do
     ]
 end
 
+# # NPM is broken under Homebrew: https://github.com/Homebrew/homebrew/issues/22408
+# dep 'node-brew' do
+#   met? { which 'node' }
+#   meet {
+#     log_shell 'Installing node without npm', 'brew install node'
+#   }
+# end
+
 dep 'node-packages' do
   requires %w[
     coffee-script.npm

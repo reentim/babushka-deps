@@ -4,7 +4,6 @@ dep 'ruby' do
   requires [
     'rbenv.managed',
     'ruby-build.managed',
-    'rbenv-readline.managed',
     "#{NEW_RUBY_VERSION}.rbenv",
     'global ruby'.with(NEW_RUBY_VERSION),
   ]
