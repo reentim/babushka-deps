@@ -6,7 +6,7 @@ meta :rbenv do
       builds
     end
 
-    requires 'rbenv.managed'
+    requires 'rbenv'
 
     met? {
       log_shell("Looking for version: #{version}", 'rbenv versions')

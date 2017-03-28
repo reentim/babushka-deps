@@ -1,4 +1,4 @@
-PATH = File.expand_path '~/.dotfiles'
+PATH = File.expand_path "#{ENV['HOME']}/.dotfiles"
 
 dep 'dotfiles', :install_ssh_socket_hack do
   requires 'dotfiles-installed'
@@ -14,11 +14,9 @@ dep 'dotfiles-configured', :install_ssh_socket_hack do
   install_ssh_socket_hack.default! false
 
   requires 'dotfiles-installed'
-  # requires 'italic-terminal'
 
-  met? { '~/.aliases'.p.exists? }
-  met? { '~/.vim'.p.exists? }
-  met? { '~/.vim/bundle/command-t'.p.exists? }
+  met? { "#{ENV['HOME']}/.aliases".p.exists? }
+  met? { "#{ENV['HOME']}/.vim".p.exists? }
 
   meet {
     system %Q{
