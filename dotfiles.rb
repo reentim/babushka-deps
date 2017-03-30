@@ -7,7 +7,7 @@ end
 
 dep 'dotfiles-installed' do
   met? { File.exists?(PATH) }
-  meet { git 'git@github.com:reentim/.dotfiles.git', :to => PATH }
+  meet { git 'git@github.com:reentim/dotfiles.git', :to => PATH }
 end
 
 dep 'dotfiles-configured', :install_ssh_socket_hack do
