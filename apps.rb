@@ -37,7 +37,7 @@ dep 'Airfoil.app' do
 end
 
 dep 'Alfred.app' do
-  source 'https://cachefly.alfredapp.com/Alfred_2.7.2_407.zip'
+  source 'https://cachefly.alfredapp.com/Alfred_3.4.1_860.dmg'
 end
 
 dep 'Arq.app' do
