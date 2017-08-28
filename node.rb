@@ -31,19 +31,11 @@ end
 
 dep 'node-packages' do
   requires %w[
-    coffee-script.npm
     underscore.npm
-    bower.npm
-    grunt-cli.npm
-    yo.npm
   ]
 end
 
 dep 'nodejs.managed'
 
-dep 'bower.npm'
-dep 'coffee-script.npm' do provides 'coffee' end
-dep 'grunt-cli.npm'
 dep 'node.managed'
 dep 'underscore.npm'
-dep 'yo.npm'

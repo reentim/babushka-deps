@@ -14,6 +14,7 @@ dep 'dotfiles-configured', :install_ssh_socket_hack do
   install_ssh_socket_hack.default! false
 
   requires 'dotfiles-installed'
+  requires { on :osx, ['keybindings'] }
 
   met? { "#{ENV['HOME']}/.aliases".p.exists? }
   met? { "#{ENV['HOME']}/.vim".p.exists? }
@@ -25,6 +26,7 @@ dep 'dotfiles-configured', :install_ssh_socket_hack do
       git submodule update --init --recursive
     }
 
+
     if install_ssh_socket_hack.set?
       system %Q{
         cd #{PATH}
@@ -32,5 +34,15 @@ dep 'dotfiles-configured', :install_ssh_socket_hack do
       }
     end
 
+  }
+end
+
+dep 'keybindings' do
+  met? { "#{ENV['HOME']}/Library/KeyBindings/DefaultKeyBinding.dict".p.exists? }
+  meet {
+    system %Q{
+      cd #{PATH}
+      rake keybindings
+    }
   }
 end

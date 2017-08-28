@@ -11,7 +11,6 @@ dep 'dev-tools' do
       homebrew
       homebrew-packages
       zsh.managed
-      vagrant.installer
     ]
   }
 

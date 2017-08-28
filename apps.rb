@@ -112,10 +112,14 @@ end
 dep 'iPhoto.appstore'
 
 dep 'iTerm.app' do
-  source 'https://iterm2.com/downloads/stable/iTerm2-2_1_1.zip'
-  provides 'iTerm.app >= 2.0'
+  source 'https://iterm2.com/downloads/stable/iTerm2-3_0_15.zip'
+  provides 'iTerm.app >= 3.0'
 end
 
 dep 'Last.fm.app' do
   source 'http://cdn.last.fm/client/Mac/Last.fm-2.1.36.zip'
+end
+
+dep 'Docker.app' do
+  source 'https://download.docker.com/mac/stable/Docker.dmg'
 end

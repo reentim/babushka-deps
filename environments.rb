@@ -46,3 +46,17 @@ dep 'iMac' do
   requires 'dotfiles'
   requires 'zsh.managed'
 end
+
+dep 'MacBook-Pro-2017' do
+  requires 'ruby'
+  requires 'preferences'
+
+  requires 'dev-tools'
+  requires 'node'
+  requires 'dotfiles'
+
+  requires 'Alfred.app'
+  requires 'Google Chrome.app'
+  requires 'iTerm.app'
+  requires 'Docker.app'
+end
