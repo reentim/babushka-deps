@@ -7,6 +7,7 @@ end
 
 dep 'linux-vm' do
   requires 'ubuntu-rails'
+  requires 'dev-tools'
   requires 'dotfiles'.with(:install_ssh_socket_hack)
 end
 
