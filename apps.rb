@@ -105,7 +105,7 @@ dep 'VLC.app' do
 end
 
 dep 'VirtualBox.installer' do
-  source 'http://download.virtualbox.org/virtualbox/4.2.16/VirtualBox-4.2.16-86992-OSX.dmg'
+  source 'http://download.virtualbox.org/virtualbox/5.1.26/VirtualBox-5.1.26-117224-OSX.dmg'
   provides 'VirtualBox', 'VboxManage', 'VBoxHeadless'
 end
 

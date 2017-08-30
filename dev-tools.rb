@@ -10,6 +10,7 @@ dep 'dev-tools' do
     on :osx, %w[
       homebrew
       homebrew-packages
+      vagrant.installer
       zsh.managed
     ]
   }
@@ -23,5 +24,6 @@ dep 'silversearcher-ag.managed' do provides 'ag'  end
 dep 'ack-grep.managed'          do provides 'ack' end
 
 dep 'vagrant.installer' do
-  source 'https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1.dmg'
+  requires 'VirtualBox.installer'
+  source 'https://releases.hashicorp.com/vagrant/1.9.8/vagrant_1.9.8_x86_64.dmg'
 end
