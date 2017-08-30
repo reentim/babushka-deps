@@ -5,6 +5,7 @@ dep 'homebrew-packages' do
     cmake.managed
     colordiff.managed
     coreutils.managed
+    direnv.managed
     git.managed
     go.managed
     hub.managed
@@ -51,6 +52,7 @@ end
 
 dep 'ack.managed'
 dep 'colordiff.managed'
+dep 'direnv.managed'
 dep 'go.managed'
 dep 'hub.managed'
 dep 'irssi.managed'
