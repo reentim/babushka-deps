@@ -54,11 +54,16 @@ dep 'ruby-build-git' do
   meet {
     git "https://github.com/rbenv/ruby-build.git", to: "#{ENV['HOME']}/.rbenv/plugins/ruby-build"
   }
+  after {
+    cd "#{ENV['HOME']}/.rbenv/plugins/ruby-build" do
+      log_shell 'Running installation script', './install.sh', sudo: true
+    end
+  }
 end
 
 dep 'ruby-build-environment' do
   met? { "#{ENV['HOME']}/.bashrc".p.grep(/ruby-build/) }
-  meet { 
+  meet {
     shell %Q[echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> #{ENV['HOME']}/.bashrc]
   }
 end
