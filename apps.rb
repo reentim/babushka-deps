@@ -17,6 +17,7 @@ dep 'apps' do
   ]
 
   requires 'Google Chrome.app'
+  requires 'Time Sink.app'
 end
 
 dep 'dev-apps' do
@@ -122,4 +123,8 @@ end
 
 dep 'Docker.app' do
   source 'https://download.docker.com/mac/stable/Docker.dmg'
+end
+
+dep 'Time Sink.app' do
+  source 'https://manytricks.com/download/_do_not_hotlink_/timesink200.dmg'
 end
