@@ -74,7 +74,7 @@ dep 'Google Chrome.app' do
 end
 
 dep 'ImageAlpha.app' do
-  source 'http://pngmini.com/ImageAlpha1.4.0.tar.bz2'
+  source 'https://pngmini.com/ImageAlpha1.5.1.tar.bz2'
 end
 
 dep 'ImageOptim.app' do
