@@ -16,7 +16,16 @@ dep 'dev-tools' do
   }
 
   requires 'gems'
+  requires 'hub.src'
   requires 'tree.managed'
+end
+
+dep 'hub.src' do
+  source 'https://github.com/github/hub/archive/v2.3.0-pre10.tar.gz'
+  configure {}
+  install do
+    'make install prefix=/usr/local'
+  end
 end
 
 dep 'tree.managed'

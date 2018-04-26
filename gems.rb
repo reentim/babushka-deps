@@ -1,19 +1,12 @@
 dep 'gems' do
-  requires {
-    on :linux, 'hub.gem'
-  }
   requires 'bundler.gem'
   requires 'gem-ctags.gem'
-  # requires 'github-auth.gem'
   requires 'pry.gem'
-  # requires 'wirble.gem'
-  # requires 'zeus.gem'
   requires 'foreman.gem'
   requires 'wirble.gem'
 end
 
 dep 'pry.gem'
-dep 'hub.gem'
 dep 'foreman.gem'
 
 dep 'bundler.gem'     do provides 'bundle' end

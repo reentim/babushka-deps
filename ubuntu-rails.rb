@@ -20,7 +20,7 @@ dep 'postgres-ubuntu' do
 end
 
 dep 'postgres-user' do
-  met? { shell %q[sudo -u postgres psql -c '\du'] }
+  met? { shell %q[sudo -u postgres psql -c '\du' | grep `whoami`] }
   meet { shell %q[sudo -u postgres createuser `whoami` -s] }
 end
 
