@@ -1,69 +1,44 @@
-NEW_RUBY_VERSION = "2.4.1"
+require 'yaml'
 
-dep 'ruby' do
-  requires [
-    "#{NEW_RUBY_VERSION}.rbenv",
-    'global ruby'.with(NEW_RUBY_VERSION),
-  ]
+dep 'ruby', :version do
+  version.default!('ruby')
+
+  requires 'ruby-install'.with(version)
+  requires 'ruby-version-managed'
+  requires 'gem_home'
 end
 
-dep 'global ruby', :version do
-  met? {
-    shell('rbenv global')[/#{version}\b/]
-  }
-  meet {
-    shell "rbenv global #{version}"
-  }
-  after {
-    shell 'rbenv rehash'
-  }
-end
+dep 'ruby-install', :version do
+  requires 'ruby-install.managed'
 
-dep "#{NEW_RUBY_VERSION}.rbenv"
-
-dep 'rbenv' do
-  requires {
-    on :osx, ['rbenv.managed', 'ruby-build.managed']
-    on :linux, ['rbenv-git', 'rbenv-environment', 'ruby-build-git']
-  }
-end
-
-dep 'rbenv-git' do
-  requires 'git.managed'
-  requires 'rbenv-environment'
-
-  met? { which 'rbenv' }
-  meet {
-    git "https://github.com/rbenv/rbenv.git", to: "#{ENV['HOME']}/.rbenv"
-  }
-  after { log "Needs logout" }
-end
-
-dep 'rbenv-environment' do
-  met? { "#{ENV['HOME']}/.bashrc".p.grep(/rbenv/) }
-  meet {
-    shell %Q[echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> #{ENV['HOME']}/.bashrc]
-    shell %Q[echo 'eval "$(rbenv init -)"' >> #{ENV['HOME']}/.bashrc]
-  }
-end
-
-dep 'ruby-build-git' do
-  requires 'ruby-build-environment'
-
-  met? { which 'ruby-build' }
-  meet {
-    git "https://github.com/rbenv/ruby-build.git", to: "#{ENV['HOME']}/.rbenv/plugins/ruby-build"
-  }
-  after {
-    cd "#{ENV['HOME']}/.rbenv/plugins/ruby-build" do
-      log_shell 'Running installation script', './install.sh', sudo: true
+  def expected_ruby_version
+    if version.to_s == 'ruby'
+      YAML.load(%x[ruby-install])["Stable ruby versions"]["ruby"].split(/\s/).last
+    else
+      version.to_s
     end
+  end
+
+  def expected_ruby_binary
+    File.join(Dir.home, '.rubies', "ruby-#{expected_ruby_version}", 'bin', 'ruby')
+  end
+
+  met? { shell? "#{expected_ruby_binary} --version" }
+  meet { shell "ruby-install #{version}" }
+end
+
+dep 'ruby-version-managed' do
+  requires 'chruby.managed'
+
+  met? { which('ruby') != '/usr/bin/ruby' }
+  meet {
+    unmeetable! "Can't see new rubies, maybe restart shell or "
   }
 end
 
-dep 'ruby-build-environment' do
-  met? { "#{ENV['HOME']}/.bashrc".p.grep(/ruby-build/) }
-  meet {
-    shell %Q[echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> #{ENV['HOME']}/.bashrc]
-  }
+dep 'gem_home' do
+  source = 'https://raw.github.com/postmodern/gem_home/master/homebrew/gem_home.rb'
+
+  met? { shell? "brew list | grep gem_home" }
+  meet { shell "brew install --HEAD #{source}" }
 end

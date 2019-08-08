@@ -1,47 +1,41 @@
-PATH = File.expand_path "#{ENV['HOME']}/.dotfiles"
+dotfiles_path = File.join(Dir.home, '.dotfiles')
 
-dep 'dotfiles', :install_ssh_socket_hack do
-  requires 'dotfiles-installed'
-  requires 'dotfiles-configured'.with(install_ssh_socket_hack)
+dep 'dotfiles', :path do
+  path.default!(dotfiles_path)
+
+  requires 'dotfiles.repo'.with(path)
+  requires 'dotfiles-installed'.with(path)
 end
 
-dep 'dotfiles-installed' do
-  met? { File.exists?(PATH) }
-  meet { git 'git@github.com:reentim/dotfiles.git', :to => PATH }
+dep 'dotfiles.repo', :path do
+  source 'git@github.com:reentim/dotfiles.git'
+  target path
 end
 
-dep 'dotfiles-configured', :install_ssh_socket_hack do
-  install_ssh_socket_hack.default! false
+dep 'dotfiles-installed', :path do
 
-  requires 'dotfiles-installed'
-  requires { on :osx, ['keybindings'] }
+  # path is not defined within the requires block, when attempting to pass :(
+  requires { on :osx, 'dotfiles-keybindings' }
 
   met? { "#{ENV['HOME']}/.aliases".p.exists? }
   met? { "#{ENV['HOME']}/.vim".p.exists? }
 
   meet {
     system %Q{
-      cd #{PATH}
+      cd #{path}
       rake install
       git submodule update --init --recursive
     }
-
-
-    if install_ssh_socket_hack.set?
-      system %Q{
-        cd #{PATH}
-        rake ssh
-      }
-    end
-
   }
 end
 
-dep 'keybindings' do
+dep 'dotfiles-keybindings', :path do
+  path.default!(dotfiles_path)
+
   met? { "#{ENV['HOME']}/Library/KeyBindings/DefaultKeyBinding.dict".p.exists? }
   meet {
     system %Q{
-      cd #{PATH}
+      cd #{path}
       rake keybindings
     }
   }

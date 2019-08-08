@@ -1,8 +1,14 @@
 dep 'zsh', :username do
   username.default!(shell('whoami'))
+
   requires 'zsh.shell_setup'
-  met? { shell("echo $SHELL") == which('zsh') }
-  meet { sudo("chsh -s '#{which('zsh')}' #{username}") }
+
+  met? {
+    !shell("dscacheutil -q user -a name `whoami`").match(%r{^shell: #{which(basename)}}).nil?
+  }
+  meet {
+    sudo("chsh -s '#{which('zsh')}' #{username}")
+  }
 end
 
 dep 'zsh.shell_setup' do
@@ -10,7 +16,3 @@ dep 'zsh.shell_setup' do
 end
 
 dep 'zsh.managed'
-
-dep 'zsh.src' do
-  source 'http://sourceforge.net/projects/zsh/files/latest/download'
-end
