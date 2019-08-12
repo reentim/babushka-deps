@@ -1,8 +1,9 @@
 dep '1Password 7.installer' do
-  raise "babushka can't handle this app name :("
-
   source 'https://app-updates.agilebits.com/download/OPM7'
   provides '1Password 7.app'
+
+  # babushka looks for "1Password-7.app"
+  met? { "/Applications/1Password\ 7.app".p.exists? }
 end
 
 dep 'Alfred.app' do

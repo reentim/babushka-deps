@@ -6,6 +6,7 @@ dep 'dev-tools' do
     ]
 
     on :osx, %w[
+      iTerm.app
       homebrew
       homebrew-packages
       vagrant.installer
@@ -15,9 +16,8 @@ dep 'dev-tools' do
 
   requires 'gems'
   requires 'tree.managed'
+  requires 'vagrant.installer'
 end
-
-dep 'tree.managed'
 
 dep 'silversearcher-ag.managed' do
   provides 'ag'

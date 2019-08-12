@@ -13,18 +13,23 @@ dep 'ruby-install', :version do
 
   def expected_ruby_version
     if version.to_s == 'ruby'
-      YAML.load(%x[ruby-install])["Stable ruby versions"]["ruby"].split(/\s/).last
+      "ruby-" + YAML.load(%x[ruby-install])["Stable ruby versions"]["ruby"].split(/\s/).last
     else
-      version.to_s
+      version.to_s.gsub("\s" , "-")
     end
   end
 
   def expected_ruby_binary
-    File.join(Dir.home, '.rubies', "ruby-#{expected_ruby_version}", 'bin', 'ruby')
+    File.join(Dir.home, '.rubies', expected_ruby_version, 'bin', 'ruby')
   end
 
   met? { shell? "#{expected_ruby_binary} --version" }
-  meet { shell "ruby-install #{version}" }
+  meet {
+    log_shell(
+      "ruby-install #{version}",
+      "ruby-install #{version} --cleanup --src-dir /tmp",
+    )
+  }
 end
 
 dep 'ruby-version-managed' do
@@ -32,7 +37,7 @@ dep 'ruby-version-managed' do
 
   met? { which('ruby') != '/usr/bin/ruby' }
   meet {
-    unmeetable! "Can't see new rubies, maybe restart shell or "
+    unmeetable! "Still on system ruby. Check hooks & restart shell."
   }
 end
 

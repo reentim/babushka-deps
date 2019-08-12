@@ -13,9 +13,9 @@ dep 'dotfiles.repo', :path do
 end
 
 dep 'dotfiles-installed', :path do
-
   # path is not defined within the requires block, when attempting to pass :(
   requires { on :osx, 'dotfiles-keybindings' }
+  requires 'dotfiles-italic-terminals'
 
   met? { "#{ENV['HOME']}/.aliases".p.exists? }
   met? { "#{ENV['HOME']}/.vim".p.exists? }
@@ -38,5 +38,18 @@ dep 'dotfiles-keybindings', :path do
       cd #{path}
       rake keybindings
     }
+  }
+end
+
+dep 'dotfiles-italic-terminals', :path do
+  path.default!(dotfiles_path)
+
+  met? { ['tmux-256color', 'xterm-256color-italic'].include? ENV['TERM'] }
+  meet {
+    cd path do
+      shell "rake italic_terminals"
+    end
+
+    unmeetable! "iTerm > Profiles > Terminal > Report terminal type: xterm-256color-italic"
   }
 end

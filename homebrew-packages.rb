@@ -8,7 +8,6 @@ dep 'homebrew-packages' do
     git.managed
     go.managed
     hub.managed
-    imagemagick.managed
     jrnl.managed
     macvim.managed
     openssl.managed
@@ -27,31 +26,28 @@ dep 'homebrew-packages' do
   ]
 end
 
-dep 'git.managed' do
-  # requires 'babushka-git-removed'
+dep 'asdf' do
+  requires 'postgresql.managed'
 end
 
-dep 'babushka-git-removed' do
-  def present_dirs
-    ["/usr/local/git"].select { |d| d.p.exists? }
-  end
-
+dep 'brew-services', :service do
   met? {
-    present_dirs.none?
+    shell("brew services list #{service}") =~ /#{service}\s+started/
   }
   meet {
-    present_dirs.each do |d|
-      log_shell "Removing babushka-installed #{d}", "rm -rf #{d}", :sudo => true
-    end
-
-    shell "brew prune"
+    log_shell(
+      "brew services start #{service}",
+      "brew services start #{service}",
+    )
   }
 end
 
 dep 'ack.managed'
 dep 'colordiff.managed'
 dep 'direnv.managed'
+dep 'git.managed'
 dep 'go.managed'
+dep 'heroku.managed'
 dep 'hub.managed'
 dep 'irssi.managed'
 dep 'jrnl.managed'
@@ -63,14 +59,11 @@ dep 'ruby-install.managed'
 dep 'ssh-copy-id.managed'
 dep 'terminal-notifier.managed'
 dep 'tmux.managed'
+dep 'tree.managed'
 dep 'vim.managed'
 dep 'watch.managed'
 dep 'watchman.managed'
 dep 'yarn.managed'
-
-dep 'heroku.managed' do
-  provides 'heroku'
-end
 
 dep 'coreutils.managed' do
   provides 'gls'
@@ -86,6 +79,8 @@ end
 
 dep 'postgresql.managed' do
   provides 'postgres'
+
+  requires { on :osx, 'brew-services'.with('postgresql') }
 end
 
 dep 'python.managed' do
@@ -94,14 +89,12 @@ end
 
 dep 'redis.managed' do
   provides 'redis-server'
+
+  requires { on :osx, 'brew-services'.with('redis') }
 end
 
 dep 'the_silver_searcher.managed' do
   provides 'ag'
-end
-
-dep 'yarn.managed' do
-  provides 'yarn'
 end
 
 dep 'bash-completion.managed' do
