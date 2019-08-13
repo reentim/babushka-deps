@@ -103,6 +103,7 @@ end
 
 dep 'chruby.managed' do
   provides 'chruby-exec'
+  requires 'default-ruby-version'
 end
 
 dep 'imagemagick.managed' do

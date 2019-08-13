@@ -47,3 +47,8 @@ dep 'gem_home' do
   met? { shell? "brew list | grep gem_home" }
   meet { shell "brew install --HEAD #{source}" }
 end
+
+dep 'default-ruby-version' do
+  met? { "~/.ruby-version".p.exists? }
+  meet { "~/.ruby-version".p.write("ruby") }
+end
