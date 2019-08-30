@@ -63,19 +63,25 @@ dep 'MacBook-Pro-2017' do
 end
 
 dep 'MacBook-Pro-2019' do
-  requires '1Password 7.installer'
-  requires 'Alfred.app'
-  requires 'Docker.app'
-  requires 'Firefox.app'
-  requires 'Google Chrome.app'
-  requires 'ImageAlpha.app'
-  requires 'ImageOptim.app'
-  requires 'Moom.app'
-  requires 'Slack.app'
-
+  requires 'apps-2019'
   requires 'deps-pushable'
   requires 'dotfiles'
   requires 'zsh'
   requires 'dev-tools'
   requires 'private:mab'
+end
+
+dep 'apps-2019' do
+  requires %w[
+    1Password\ 7.installer
+    Alfred.app
+    Docker.app
+    Firefox.app
+    Google\ Chrome.app
+    ImageAlpha.app
+    ImageOptim.app
+    Moom.app
+    Slack.app
+    Dash.app
+  ]
 end

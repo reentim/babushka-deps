@@ -14,15 +14,16 @@ dep 'homebrew-packages' do
     p7zip.managed
     postgresql.managed
     redis.managed
+    ruby-install.managed
     ssh-copy-id.managed
     terminal-notifier.managed
     the_silver_searcher.managed
     tmux.managed
     tree.managed
     watch.managed
+    wdiff.managed
     yarn.managed
     z.managed
-    ruby-install.managed
   ]
 end
 
@@ -45,9 +46,9 @@ end
 dep 'ack.managed'
 dep 'colordiff.managed'
 dep 'direnv.managed'
+dep 'doctl.managed'
 dep 'git.managed'
 dep 'go.managed'
-dep 'heroku.managed'
 dep 'hub.managed'
 dep 'irssi.managed'
 dep 'jrnl.managed'
@@ -64,6 +65,7 @@ dep 'vim.managed'
 dep 'watch.managed'
 dep 'watchman.managed'
 dep 'yarn.managed'
+dep 'wdiff.managed'
 
 dep 'coreutils.managed' do
   provides 'gls'

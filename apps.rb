@@ -80,3 +80,14 @@ dep 'vagrant.installer' do
   requires 'VirtualBox.installer'
   source 'https://releases.hashicorp.com/vagrant/2.2.5/vagrant_2.2.5_x86_64.dmg'
 end
+
+dep 'Dash.app' do
+  source 'https://singapore.kapeli.com/downloads/v4/Dash.zip'
+
+  # babushka looks for Dash*.app, which is met by Dashboard.app
+  met? { "/Applications/Dash.app".p.exists? }
+end
+
+dep 'Visual Studio Code.app' do
+  source 'https://update.code.visualstudio.com/latest/darwin/stable'
+end

@@ -1,12 +1,16 @@
 dep 'fonts' do
-  # requires 'richo:font'
-  # requires 'courier_prime.ttf'
-  # => /usr/local/babushka/lib/babushka/helpers/log_helpers.rb:78:in
-  # `removed!': Passing options to 'meta' never actually did anything :) It has
-  # been removed after being deprecated.
+  def fonts
+    '~/iCloud-Drive/Files/fonts/**/*.{ttf,otf}'.p.glob
+  end
 
-end
+  def font_basenames
+    fonts.map { |f| File.basename(f) }
+  end
 
-dep 'courier_prime.ttf' do
-  source 'http://quoteunquoteapps.com/downloads/courier-prime.zip'
+  def installed_fonts
+    Dir.chdir('~/Library/Fonts'.p) { Dir.glob('**') }
+  end
+
+  met? { (installed_fonts & font_basenames).sort == font_basenames.sort }
+  meet { fonts.each { |font| font.p.copy('~/Library/Fonts'.p) } }
 end
