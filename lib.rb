@@ -19,7 +19,7 @@ dep 'libraries' do
         Dir.mkdir(new_dir) unless File.directory?(new_dir)
         temp_file.p.mv(new_path)
         File.symlink(new_path, File.join(lib, filename))
-        log format("Moving %s to directory", filename)
+        log format("Moving %s to directory, and linking from ~/lib", filename)
       end
     }
 
