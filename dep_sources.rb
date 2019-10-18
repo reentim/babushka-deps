@@ -3,6 +3,10 @@ dep 'dep-sources' do
   requires 'deps-pushable'
 end
 
+dep 'deps-pulled' do
+  requires 'repo-pulled-since'.with(repo: '~/.babushka/sources/reentim')
+end
+
 dep 'private-deps.repo' do
   requires 'bitbucket-authentication'
 
