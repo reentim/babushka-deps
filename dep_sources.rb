@@ -1,3 +1,12 @@
+# TODO
+# dotfiles repo:
+# git submodule init
+# git submodule update
+# if master behind origin/master and ff-able, ff and attempt rebase of branch onto it
+#
+# update submodules from their remotes, commit to modules/next branch
+# have edge branch which is all the branches that will rebase onto master together, so rebased
+
 dep 'dep-sources' do
   requires 'private-deps.repo'
   requires 'deps-pushable'
