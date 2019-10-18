@@ -5,7 +5,6 @@ dep 'ruby', :version do
   version.default!('ruby')
 
   requires 'ruby-install'.with(version)
-  requires 'ruby-version-managed'
   requires 'gem_home'
 end
 
