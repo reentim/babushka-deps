@@ -1,9 +1,8 @@
 dep 'symlink', :source, :target do
-  met? { target.p.readlink == source.to_s }
+  met? { target.p.readlink == source.p }
   meet {
     log "Linking #{source} to #{target}"
-    target.p.rm if target.p.exists? && target.p.empty?
-    target.p.make_symlink(source)
+    target.p.make_symlink(source.p)
   }
 end
 
