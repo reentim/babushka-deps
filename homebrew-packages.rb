@@ -18,6 +18,7 @@ dep 'homebrew-packages' do
     ssh-copy-id.managed
     terminal-notifier.managed
     the_silver_searcher.managed
+    tig.managed
     tmux.managed
     tree.managed
     watch.managed
@@ -59,6 +60,7 @@ dep 'ruby-build.managed'
 dep 'ruby-install.managed'
 dep 'ssh-copy-id.managed'
 dep 'terminal-notifier.managed'
+dep 'tig.managed'
 dep 'tmux.managed'
 dep 'tree.managed'
 dep 'vim.managed'

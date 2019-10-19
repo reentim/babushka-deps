@@ -91,5 +91,6 @@ dep 'common' do
     iterm
     deps
     dotfiles-linked
+    tig.managed
   ]
 end
