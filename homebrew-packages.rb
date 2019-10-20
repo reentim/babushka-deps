@@ -28,9 +28,6 @@ dep 'homebrew-packages' do
   ]
 end
 
-dep 'asdf' do
-  requires 'postgresql.managed'
-end
 
 dep 'brew-services', :service do
   met? {
@@ -66,8 +63,8 @@ dep 'tree.managed'
 dep 'vim.managed'
 dep 'watch.managed'
 dep 'watchman.managed'
-dep 'yarn.managed'
 dep 'wdiff.managed'
+dep 'yarn.managed'
 
 dep 'coreutils.managed' do
   provides 'gls'
