@@ -10,6 +10,7 @@ dep 'dev-tools' do
       homebrew
       homebrew-packages
       vagrant.installer
+      xcode-command-line-tools
       zsh.managed
       alt
     ]
@@ -20,6 +21,11 @@ dep 'dev-tools' do
   requires 'gems'
   requires 'tree.managed'
   requires 'vagrant.installer'
+end
+
+dep 'xcode-command-line-tools' do
+  met? { shell? "xcode-select -p &>/dev/null" }
+  meet { shell "xcode-select --install" }
 end
 
 dep 'silversearcher-ag.managed' do
