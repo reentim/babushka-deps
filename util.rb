@@ -1,6 +1,8 @@
 dep 'symlink', :source, :target do
   met? { target.p.readlink == source.p }
   meet {
+    unmeetable! "#{target} already exists" if target.p.exists?
+
     log "Linking #{source} to #{target}"
     target.p.make_symlink(source.p)
   }
