@@ -26,10 +26,6 @@ dep 'homebrew-packages' do
   ]
 end
 
-dep 'asdf' do
-  requires 'postgresql.managed'
-end
-
 dep 'brew-services', :service do
   met? {
     shell("brew services list #{service}") =~ /#{service}\s+started/
