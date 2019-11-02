@@ -92,5 +92,6 @@ dep 'common' do
     deps
     dotfiles-linked
     cloud
+    proj
   ]
 end
