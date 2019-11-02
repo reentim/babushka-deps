@@ -9,7 +9,6 @@ dep 'homebrew-packages' do
     go.managed
     hub.managed
     jrnl.managed
-    macvim.managed
     openssl.managed
     p7zip.managed
     postgresql.managed
