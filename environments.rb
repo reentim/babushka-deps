@@ -93,5 +93,6 @@ dep 'common' do
     dotfiles-linked
     cloud
     proj
+    cron
   ]
 end
