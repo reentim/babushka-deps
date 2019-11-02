@@ -71,8 +71,7 @@ dep 'packages-installed', :path do
 
   met? {
     cd path do
-      # shell? "yarn check"
-      'node_modules'.p.exists?
+      shell? "yarn check"
     end
   }
   meet {
