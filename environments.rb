@@ -85,14 +85,3 @@ dep 'apps-2019' do
     Dash.app
   ]
 end
-
-dep 'common' do
-  requires %w[
-    iterm
-    deps
-    dotfiles-linked
-    cloud
-    proj
-    cron
-  ]
-end
