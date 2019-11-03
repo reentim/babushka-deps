@@ -42,3 +42,7 @@ dep 'ssh-authentication', :user, :domain do
   meet { unmeetable! "ssh key for #{domain} not in place?" }
 end
 
+dep 'benhoskings.dep_source'
+dep 'reentim.dep_source'
+dep 'richo.dep_source'
+dep 'xaviershay.dep_source'

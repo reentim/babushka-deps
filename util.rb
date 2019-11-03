@@ -36,3 +36,8 @@ dep 'repo-fetched-since', :repo, :time do
     log_shell("Fetching #{repo.p}", "git --git-dir #{repo.p}/.git fetch")
   }
 end
+
+dep 'repo', :source, :target do
+  met? { "#{target}/.git".p.exists? }
+  meet { git source.to_s, to: target.to_s }
+end
