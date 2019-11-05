@@ -6,7 +6,7 @@ end
 
 dep 'proj-linked' do
   requires 'symlink'.with(
-    source: "~/Library/Mobile Documents/com~apple~CloudDocs".p,
+    source: "~/Library/Mobile Documents/com~apple~CloudDocs/dev/proj".p,
     target: "~/proj".p,
   )
 end
