@@ -6,5 +6,6 @@ dep 'common' do
     cloud
     proj
     cron
+    vim
   ]
 end

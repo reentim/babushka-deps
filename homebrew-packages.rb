@@ -110,3 +110,8 @@ end
 dep 'z.managed' do
   provides []
 end
+
+dep 'cmake.managed' do
+  installs 'cmake'
+  provides 'cmake'
+end

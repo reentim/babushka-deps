@@ -1,51 +1,42 @@
 dep 'vim' do
-  requires {
-    on :linux, 'vim.src'
-    on :osx, [
-      'macvim.managed',
-      'vim.managed'
-    ]
-  }
-
+  requires 'vim.src'
   requires 'command-t'
-  requires 'you-complete-me'
-  requires 'stock-ultisnips-removed'
 end
 
 dep 'vim.src' do
-  requires 'libncurses5-dev.managed'
-  requires 'python-dev.managed'
-
   met? {
     if which 'vim'
       version = `vim --version`
+      version.include?(format("Compiled by %s@%s", `whoami`.chomp, `hostname`.chomp)) &&
       version.include?('+ruby') &&
       version.include?('+python')
     end
   }
 
-  source 'ftp://ftp.vim.org/pub/vim/unstable/unix/vim-7.4a.tar.bz2'
+  provides 'vim ~> 8.1.2'
+
+  source 'https://github.com/vim/vim/archive/v8.1.2256.tar.gz'
+
+  # TODO: figure out why I can't use the git source, without encountering
+  # /usr/local/babushka/lib/babushka/asset.rb:177:in `for': Don't know how to extract vim.`
+  # like it's expecting an extractable
+  # ---
+  # source 'git://github.com:vim/vim.git'
+
   configure_args '--with-features=huge \
                   --disable-gui \
                   --enable-rubyinterp \
                   --enable-pythoninterp \
                   --with-python-config-dir=/usr/lib/python2.7/config'
-  provides 'vim'
-end
-
-dep 'python-dev.managed' do
-  installs 'python-dev'
-  provides []
 end
 
 dep 'command-t', :ruby_path do
-  ruby_path.default "/usr/bin"
-
-  met? { '~/.dotfiles/vim/bundle/command-t/ruby/command-t/ext.o'.p.exists? }
+  dir = "~/.vim/bundle/command-t/ruby/command-t/ext/command-t".p
+  met? { "#{dir}/ext.o".p.exists? }
   meet {
-    log_block "Making command-t with #{ruby_path}ruby" do
-      cd "#{ENV['HOME']}/.dotfiles/vim/bundle/command-t/ruby/command-t" do
-        shell "#{ruby_path if ruby_path.set?}ruby extconf.rb"
+    log_block "Making command-t" do
+      cd dir do
+        shell "ruby extconf.rb"
         shell "make"
       end
     end
@@ -62,11 +53,6 @@ dep 'you-complete-me' do
       shell "./install.sh"
     end
   }
-end
-
-dep 'cmake.managed' do
-  installs 'cmake'
-  provides 'cmake'
 end
 
 dep 'stock-ultisnips-removed' do
