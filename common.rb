@@ -8,5 +8,6 @@ dep 'common' do
     cron
     vim
     fonts
+    dev-tools
   ]
 end

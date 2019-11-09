@@ -1,4 +1,9 @@
 dep 'dev-tools' do
+  requires 'ctags.managed'
+  requires 'tig.managed'
+end
+
+dep 'old-dev-tools' do
   requires {
     on :linux, %w[
       tmux.managed
