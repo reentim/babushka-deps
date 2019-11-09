@@ -7,5 +7,6 @@ dep 'common' do
     proj
     cron
     vim
+    fonts
   ]
 end
