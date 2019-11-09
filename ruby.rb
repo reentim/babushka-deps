@@ -1,12 +1,9 @@
 require 'yaml'
-require_relative 'helpers/chruby'
 
 dep 'ruby', :version do
   version.default!('ruby')
 
   requires 'ruby-install'.with(version)
-  requires 'ruby-version-managed'
-  requires 'gem_home'
 end
 
 dep 'ruby.src' do
@@ -39,8 +36,6 @@ dep 'ruby-install', :version do
 end
 
 dep 'ruby-version-managed' do
-  requires 'chruby.managed'
-
   met? { which('ruby') != '/usr/bin/ruby' }
   meet {
     unmeetable! "Still on system ruby. Check hooks & restart shell."
