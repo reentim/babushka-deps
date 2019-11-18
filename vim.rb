@@ -31,7 +31,7 @@ dep 'vim.src' do
 end
 
 dep 'command-t', :ruby_path do
-  dir = "~/.vim/bundle/command-t/ruby/command-t/ext/command-t".p
+  dir = "~/.vim/pack/bundle/start/command-t/ruby/command-t/ext/command-t".p
   met? { "#{dir}/ext.o".p.exists? }
   meet {
     log_block "Making command-t" do
