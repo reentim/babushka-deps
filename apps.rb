@@ -7,7 +7,7 @@ dep '1Password 7.installer' do
 end
 
 dep 'Alfred.app' do
-  source 'https://cachefly.alfredapp.com/Alfred_4.0.3_1092.dmg'
+  source 'https://cachefly.alfredapp.com/Alfred_4.3.2_1221.dmg'
 end
 
 dep 'Arq.app' do
@@ -52,7 +52,7 @@ dep 'VirtualBox.installer' do
 end
 
 dep 'iTerm.app' do
-  source 'https://iterm2.com/downloads/stable/iTerm2-3_3_1.zip'
+  source 'https://iterm2.com/downloads/stable/latest'
   provides 'iTerm.app >= 3.0'
 end
 
@@ -82,7 +82,7 @@ dep 'vagrant.installer' do
 end
 
 dep 'Dash.app' do
-  source 'https://singapore.kapeli.com/downloads/v4/Dash.zip'
+  source 'https://sanfrancisco.kapeli.com/downloads/v6/Dash.zip'
 
   # babushka looks for Dash*.app, which is met by Dashboard.app
   met? { "/Applications/Dash.app".p.exists? }
