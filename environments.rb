@@ -85,3 +85,15 @@ dep 'apps-2019' do
     Dash.app
   ]
 end
+
+dep 'imac-2021' do
+  requires %w[
+    Alfred.app
+    Dash.app
+    iTerm.app
+    Moom.app
+    dotfiles
+    dev-tools
+    cloud
+  ]
+end

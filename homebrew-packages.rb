@@ -10,7 +10,6 @@ dep 'homebrew-packages' do
     go.managed
     hub.managed
     jrnl.managed
-    openssl.managed
     p7zip.managed
     postgresql.managed
     redis.managed
@@ -30,7 +29,7 @@ end
 
 dep 'brew-services', :service do
   met? {
-    shell("brew services list #{service}") =~ /#{service}\s+started/
+    shell("brew services list") =~ /#{service}\s+started/
   }
   meet {
     log_shell(
@@ -81,7 +80,7 @@ end
 dep 'postgresql.managed' do
   provides 'postgres'
 
-  requires { on :osx, 'brew-services'.with('postgresql') }
+  # requires { on :osx, 'brew-services'.with('postgresql') }
 end
 
 dep 'python.managed' do
@@ -91,7 +90,7 @@ end
 dep 'redis.managed' do
   provides 'redis-server'
 
-  requires { on :osx, 'brew-services'.with('redis') }
+  # requires { on :osx, 'brew-services'.with('redis') }
 end
 
 dep 'the_silver_searcher.managed' do

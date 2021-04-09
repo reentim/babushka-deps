@@ -1,6 +1,5 @@
 dep 'dev-tools' do
-  requires 'ctags.managed'
-  requires 'tig.managed'
+  requires 'homebrew-packages'
 end
 
 dep 'old-dev-tools' do

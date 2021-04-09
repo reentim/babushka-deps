@@ -1,4 +1,4 @@
-dotfiles_path = File.join(Dir.home, '.dotfiles')
+dotfiles_path = File.join(Dir.home, 'dotfiles')
 
 dep 'dotfiles-linked' do
   requires 'symlink'.with(source: '~/.dotfiles', target: '~/dotfiles')
